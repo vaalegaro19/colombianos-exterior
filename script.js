@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======= CARGAR CSV =======
-  Papa.parse("https://drive.google.com/uc?export=download&id=1O0MX6tdkBE-NGOrXDSEa4t-vWMthY5gs", {
+  Papa.parse("Colombianos_registrados_en_el_exterior_20250904.csv", {
     download: true,
     header: true,
     complete: function(results) {
@@ -189,4 +189,5 @@ function crearGrafico(tipo, labels, data, titulo) {
     }
   });
 }
+
 
