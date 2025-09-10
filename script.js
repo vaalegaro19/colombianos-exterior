@@ -31,22 +31,21 @@ if (document.querySelector(".mySwiper")) {
     loop: true,
     pagination: { el: ".swiper-pagination", clickable: true },
     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-    autoHeight: false   // mantiene altura fija
+    autoHeight: false
   });
 }
 
+// ================= CARGAR CSV MULTIPLES =================
+const archivosCSV = [
+  "Colombianos_ex_parte1.csv",
+  "Colombianos_ex_parte2.csv"
+];
 
-
-
-
-
-// ================= DOMCONTENTLOADED =================
 document.addEventListener("DOMContentLoaded", () => {
 
   // ======= SIDEBAR =======
   const menuBtn = document.querySelector(".menu-btn");
   const sidebar = document.querySelector(".sidebar");
-
   if (menuBtn && sidebar) {
     menuBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
@@ -54,19 +53,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======= CARGAR CSV =======
-  Papa.parse("Colombianos_registrados_en_el_exterior_20250904.csv", {
+  cargarCSVPartes(0);
+});
+
+function cargarCSVPartes(indice) {
+  if (indice >= archivosCSV.length) {
+    if (document.getElementById("graficoPaises")) {
+      generarGraficoPrincipal();
+    }
+    return;
+  }
+
+  Papa.parse(archivosCSV[indice], {
     download: true,
     header: true,
     complete: function(results) {
-      datosCSV = results.data;
-
-      // Gráfico principal en index.html
-      if (document.getElementById("graficoPaises")) {
-        generarGraficoPrincipal();
-      }
+      datosCSV = datosCSV.concat(results.data); // Une los datos de ambos archivos
+      cargarCSVPartes(indice + 1); // Carga siguiente archivo
+    },
+    error: function(err) {
+      console.error("Error al cargar CSV:", archivosCSV[indice], err);
     }
   });
-});
+}
 
 // ================= GRÁFICO PRINCIPAL (index.html) =================
 function generarGraficoPrincipal() {
@@ -91,7 +100,7 @@ function generarGraficoPrincipal() {
     },
     options: { 
       responsive: true,
-      maintainAspectRatio: true,  // altura proporcional al ancho
+      maintainAspectRatio: true,
       scales:{ y:{ beginAtZero:true } }
     }
   });
@@ -153,7 +162,6 @@ function consultarDatos() {
     return;
   }
 
-  // Gráfico general
   crearGrafico(
     criterio === "nivel" ? "pie" : criterio === "anio" ? "line" : "bar",
     Object.keys(datosAgrupados),
@@ -183,11 +191,12 @@ function crearGrafico(tipo, labels, data, titulo) {
     },
     options: { 
       responsive: true,
-      maintainAspectRatio: true, // altura proporcional al ancho
+      maintainAspectRatio: true,
       plugins: { legend: { display: tipo === "pie" } },
       scales: tipo === "bar" || tipo === "line" ? { y: { beginAtZero: true } } : {}
     }
   });
 }
+
 
 
