@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas - Colombianos en el Exterior</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <!-- Agregamos id="menuBtn" -->
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">☰</button>
+    <h1>ESTADÍSTICAS</h1>
+  </header>
+
+  <!-- Agregamos id="sidebar" -->
+  <aside id="sidebar" class="sidebar">
+    <h2>Menú</h2>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="estadisticas.html" class="activo">Estadísticas</a></li>
+      <li><a href="informacion.html">Más información</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <section class="filtros tarjeta">
+      <h2>Opciones de búsqueda</h2>
+      <label for="criterio">Ver estadísticas por:</label>
+      <select id="criterio" onchange="consultarDatos()">
+        <option value="">Seleccione una categoría</option>
+        <option value="pais">País de residencia</option>
+        <option value="anio">Año de migración</option>
+        <option value="nivel">Nivel académico</option>
+        <option value="departamento">Departamento de nacimiento</option>
+      </select>
+      <button onclick="consultarDatos()">Generar gráfico</button>
+    </section>
+
+    <section class="graficos tarjeta">
+      <h2>Resultados</h2>
+      <canvas id="graficoUnico" width="200" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Colombianos en el exterior</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

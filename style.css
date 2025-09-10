@@ -1,0 +1,180 @@
+/* ====== General ====== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* ====== Tarjeta común ====== */
+.tarjeta {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+/* ====== Header ====== */
+header {
+  background: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.menu-btn {
+  position: absolute;
+  left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -240px;
+  width: 220px;
+  height: 100%;
+  background: #004080;
+  color: white;
+  padding: 1rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.activo {
+  background: #003060;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* ====== Carrusel ====== */
+.carrusel {
+  width: 95%;
+  max-width: 1200px;
+  height: 250px;       /* altura fija */
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.mySwiper, .swiper-wrapper, .swiper-slide {
+  height: 100%;        /* cada slide respeta la altura del contenedor */
+}
+
+.swiper-slide {
+  background-size: cover;      /* la imagen cubre todo el slide */
+  background-position: center; /* centrada vertical y horizontal */
+  background-repeat: no-repeat;
+}
+
+/* ====== Canvas / Gráficos ====== */
+#graficoUnico, #graficoPaises {
+  display: block;
+  margin: 2rem auto;
+  width: 80%;         /* ancho del gráfico */
+  max-width: 600px;   /* ancho máximo */
+  height: auto;       /* altura automática según maintainAspectRatio: true */
+}
+
+/* ====== Footer ====== */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* ====== Filtros ====== */
+.filtros label {
+  margin: 0 10px;
+}
+
+.filtros select, .filtros button {
+  margin: 10px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.info-contenido {
+  display: flex;
+  flex-wrap: wrap;          /* permite que en pantallas pequeñas el texto quede debajo */
+  align-items: flex-start;  /* alinea la parte superior de la imagen con el texto */
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.info-img {
+  flex: 0 0 30%;            /* ocupa un 30% del ancho de la tarjeta */
+  max-width: 200px;         /* ancho máximo para pantallas grandes */
+  height: auto;             /* altura proporcional */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info-texto {
+  flex: 1;                  /* ocupa el resto del espacio */
+  min-width: 200px;         /* evita que el texto se haga demasiado estrecho */
+}
+
+/* Ajuste responsive: en pantallas muy pequeñas apilar imagen y texto */
+@media (max-width: 600px) {
+  .info-contenido {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-img {
+    width: 80%;
+    max-width: none;
+    margin-bottom: 1rem;
+  }
+
+  .info-texto {
+    text-align: center;
+  }
+}
+
+

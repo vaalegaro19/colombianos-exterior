@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página principal - COLOMBIANOS EN EL EXTERIOR</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">☰</button>
+    <h1>COLOMBIANOS EN EL EXTERIOR</h1>
+  </header>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <h2>Menú</h2>
+    <ul>
+      <li><a href="index.html" class="activo">Inicio</a></li>
+      <li><a href="estadisticas.html">Estadísticas</a></li>
+      <li><a href="informacion.html">Más información</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <!-- Carrusel -->
+    <section class="carrusel tarjeta">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url('Imagen_colombianos_1.jpg');"></div>
+          <div class="swiper-slide" style="background-image: url('Imagen_colombianos_2.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('Imagen_colombianos_3.jpg');"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Descripción -->
+<section class="descripcion tarjeta">
+  <h2>Bienvenido</h2>
+  <p>
+    ¡Bienvenido al portal de Colombianos en el Exterior! Aquí encontrarás <strong>información y estadísticas clave</strong> sobre la migración de los colombianos, sus niveles educativos y oportunidades en el extranjero. Explora datos claros, visualiza gráficos interactivos y mantente al tanto de la realidad de los colombianos que viven fuera del país. Un espacio pensado para <strong>informarte de manera sencilla y confiable</strong>.
+  </p>
+</section>
+
+
+    <!-- Gráfico de países -->
+    <section class="grafico tarjeta">
+      <h2>Descubre dónde viven la mayoría de los colombianos en el mundo y visualiza su distribución de manera clara y sencilla.</h2>
+      <canvas id="graficoPaises"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Colombianos en el exterior</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</htm
+
